@@ -18,9 +18,9 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_fronta
 # === Constants ===
 RECT_WIDTH = 400
 RECT_HEIGHT = 250
-FACE_SAVE_PATH = "extracted_face.jpg"
-DATABASE_NAME = "cnic_records.db"
-TABLE_NAME = "cnic_data"
+FACE_SAVE_PATH = ""
+DATABASE_NAME = ""
+TABLE_NAME = ""
 
 # === Initialize Camera ===
 cap = cv2.VideoCapture(1)  # Adjust if wrong camera index

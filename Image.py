@@ -1,7 +1,7 @@
 import cv2
 
 # Load image
-image = cv2.imread(r"C:\Users\Dell\Desktop\ID Card_2.jpg")
+image = cv2.imread(r"")
 
 # Load OpenCV's pretrained face detector
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
