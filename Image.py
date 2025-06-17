@@ -1,6 +1,6 @@
 import cv2
 
-# Load image
+# Upload your Image here
 image = cv2.imread(r"")
 
 # Load OpenCV's pretrained face detector
