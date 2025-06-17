@@ -1,130 +1,108 @@
-CNIC-Extractor-and-Face-Detection-Suite
-This project focuses on extracting relevant personal information from CNIC (Computerized National Identity Card) images using Python, OpenCV, and PaddleOCR. It is specifically designed to:
+<h1>NIC Extraction Project</h1>
 
-Capture CNIC images via webcam.
+<p>This project focuses on extracting relevant personal information from CNIC (Computerized National Identity Card) images using <strong>Python, OpenCV, and PaddleOCR</strong>.</p>
 
-Detect the card's position and quality.
+<p><strong>Core Features:</strong></p>
+<ul>
+    <li>Capture CNIC images via webcam.</li>
+    <li>Detect card position and image quality.</li>
+    <li>Extract important identity fields like Name, Father’s Name, CNIC Number, Gender, Dates, etc.</li>
+    <li>Detect and crop faces from the CNIC image.</li>
+</ul>
 
-Extract important identity fields like Name, Father’s Name, CNIC Number, Gender, Dates, etc.
+<hr>
 
-Detect and crop faces from the CNIC image.
+<h2>Project Structure & File-wise Explanation</h2>
 
-Project Structure & File-wise Explanation
-extract.py
-This is the main driver file of the project.
-It does the following:
+<h3>extract.py</h3>
+<p>This is the <strong>main driver file</strong> of the project.</p>
+<p><strong>Responsibilities:</strong></p>
+<ul>
+    <li>Access webcam and display a guide rectangle for CNIC placement.</li>
+    <li>Check CNIC alignment and image sharpness.</li>
+    <li>Capture and crop the CNIC image on pressing <code>c</code>.</li>
+    <li>Extract text using PaddleOCR.</li>
+    <li>Map extracted text to CNIC fields:
+        <ul>
+            <li>Name</li>
+            <li>Father’s Name</li>
+            <li>CNIC Number</li>
+            <li>Date of Birth</li>
+            <li>Date of Issue</li>
+            <li>Date of Expiry</li>
+            <li>Gender</li>
+            <li>Country of Stay</li>
+        </ul>
+    </li>
+    <li>Display annotated CNIC with extracted fields.</li>
+</ul>
 
-Opens the system's webcam and displays a guide rectangle for positioning the CNIC.
+<h3>Image.py</h3>
+<p>This file handles <strong>face detection</strong> from CNIC images.</p>
+<p><strong>Responsibilities:</strong></p>
+<ul>
+    <li>Read saved CNIC images from the system.</li>
+    <li>Detect faces using OpenCV’s Haar cascade model.</li>
+    <li>Crop and save the detected face image.</li>
+</ul>
 
-Detects whether the CNIC is properly aligned inside the rectangle.
+<h3>MERGEDdb.py</h3>
+<p>This file is a <strong>future extension</strong> for face detection and potential database operations.</p>
+<p><strong>Responsibilities:</strong></p>
+<ul>
+    <li>Currently performs the same face detection as Image.py.</li>
+    <li>Can be expanded to:
+        <ul>
+            <li>Store extracted CNIC data in a database.</li>
+            <li>Merge user profiles with cropped face images.</li>
+        </ul>
+    </li>
+</ul>
 
-Checks the image sharpness to ensure readability.
+<h3>.gitignore</h3>
+<p>This file ensures unnecessary files are not pushed to the remote repository.</p>
+<ul>
+    <li>Ignores PyCharm files: <code>.idea/</code></li>
+    <li>Ignores virtual environments: <code>.venv/</code></li>
+    <li>Ignores local PaddleOCR folder: <code>PaddleOCR/</code></li>
+    <li>Ignores Python cache files: <code>__pycache__/</code> and <code>*.pyc</code></li>
+</ul>
 
-On pressing c:
+<hr>
 
-Captures the CNIC image.
+<h2>How to Run</h2>
 
-Crops it to the rectangle.
-
-Applies PaddleOCR to extract text from the image.
-
-Maps the extracted text to CNIC fields like:
-
-Name
-
-Father’s Name
-
-CNIC Number
-
-Date of Birth
-
-Date of Issue
-
-Date of Expiry
-
-Gender
-
-Country of Stay
-
-Displays the recognized fields and annotated CNIC image.
-
-Provides a simple, interactive loop to capture or quit.
-
-Image.py
-This file focuses on face detection from the CNIC image.
-It does the following:
-
-Reads a saved CNIC image from your system.
-
-Detects faces using OpenCV's pre-trained Haar cascade model.
-
-Crops the detected face.
-
-Displays and saves the cropped face image.
-
-MERGEDdb.py
-This file performs the same face detection logic as Image.py but is intended to be expanded for:
-
-Database operations (in the next development phase).
-
-Merging and storing the extracted data.
-
-Currently, it's structured for face detection and saving cropped images, but it can be improved to:
-
-Save extracted text into an SQLite database.
-
-Merge face images and CNIC data for complete user profiles.
-
-.gitignore
-The .gitignore file is properly configured to:
-
-Ignore PyCharm-specific files (.idea/).
-
-Ignore the virtual environment folder (.venv/).
-
-Ignore the local PaddleOCR directory (PaddleOCR/).
-
-Ignore Python cache files (__pycache__/, *.pyc).
-
-This ensures that unnecessary files are not pushed to the remote repository.
-
-How to Run
-Clone the Repository:
-
-bash
-Copy
-Edit
-git clone <repository-url>
-Setup Virtual Environment:
-
-bash
-Copy
-Edit
-python -m venv .venv
+<ol>
+    <li><strong>Clone the Repository:</strong>
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li><strong>Setup Virtual Environment:</strong>
+        <pre><code>python -m venv .venv
 source .venv/bin/activate  # For Linux/Mac
-.venv\Scripts\activate     # For Windows
-Install Dependencies:
+.venv\Scripts\activate     # For Windows</code></pre>
+    </li>
+    <li><strong>Install Dependencies:</strong>
+        <pre><code>pip install paddleocr opencv-python numpy</code></pre>
+    </li>
+    <li><strong>Run the Main File:</strong>
+        <pre><code>python extract.py</code></pre>
+    </li>
+</ol>
 
-bash
-Copy
-Edit
-pip install paddleocr opencv-python numpy
-Run the Main File:
+<hr>
 
-bash
-Copy
-Edit
-python extract.py
-Key Functionalities
-Real-time CNIC detection via webcam.
+<h2>Key Functionalities</h2>
+<ul>
+    <li>Real-time CNIC detection via webcam.</li>
+    <li>Image sharpness validation.</li>
+    <li>Accurate OCR using PaddleOCR.</li>
+    <li>Mapping extracted text to proper CNIC fields.</li>
+    <li>Face detection and cropping.</li>
+    <li>Clean, organized, and extendable project structure.</li>
+</ul>
 
-Image sharpness validation.
+<hr>
 
-Accurate OCR using PaddleOCR.
-
-Clean mapping of extracted CNIC fields.
-
-Face detection and cropping.
-
-Organized and extendable code structure.
-
+<h2>Author</h2>
+<p><strong>M Abdullah</strong><br>
+Associate AI/ML Engineer</p>
