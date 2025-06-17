@@ -1,5 +1,12 @@
-# Ignore virtual environment
+# Ignore PyCharm project files
+.idea/
+
+# Ignore virtual environments
 .venv/
 
-# Ignore PaddleOCR config or folder if not required
+# Ignore PaddleOCR if it's not a submodule
 PaddleOCR/
+
+# Ignore common cache files
+__pycache__/
+*.pyc
