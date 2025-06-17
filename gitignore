@@ -1,0 +1,5 @@
+# Ignore virtual environment
+.venv/
+
+# Ignore PaddleOCR config or folder if not required
+PaddleOCR/
